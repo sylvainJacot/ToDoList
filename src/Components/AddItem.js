@@ -22,6 +22,7 @@ const AddItem = () => {
         <Form>
             <Input
             type={"text"}
+            placeholder={"Add an item and press enter ⏎"}
             ></Input>
         </Form>
     </>
