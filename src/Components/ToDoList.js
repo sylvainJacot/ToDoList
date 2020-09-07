@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import AddItem from "../Components/AddItem";
 import {Colors} from  "../Components/Colors";
+import TabStatus from "./TabStatus/TabStatus";
 
 export const Wrapper = styled.div`
 width: 100%;
@@ -22,6 +23,7 @@ const ToDoList = () => {
         <Wrapper>
             <Title>To do list</Title>
             <AddItem/>
+            <TabStatus/>
         </Wrapper>
     )
 }
