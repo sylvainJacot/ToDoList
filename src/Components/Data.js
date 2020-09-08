@@ -7,12 +7,12 @@ export const TabList = [
     },
     {
         id: "2",
-        path:"/",
+        path:"/active",
         label:"Active",
     },
     {
         id: "3",
-        path:"/",
+        path:"/completed",
         label:"Completed",
     },
 ]

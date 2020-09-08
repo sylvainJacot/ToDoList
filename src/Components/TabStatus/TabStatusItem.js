@@ -11,6 +11,12 @@ list-style: none;
 export const StyledLink = styled(Link)`
 text-decoration: none;
 color: ${Colors.LightGrey};
+transition: .2s;
+
+&:hover {
+color:${Colors.White};
+transition: .2s;
+}
 
 `;
 
