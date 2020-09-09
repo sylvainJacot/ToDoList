@@ -7,7 +7,7 @@ const ToDoItemCompleted = ({todo, handleItemClick, index, handleRemove}) => {
             { (todo.isCompleted) && (
         <ToDoItem
             todo={todo}
-            handleItemClic={handleItemClick}
+            handleItemClick={handleItemClick}
             index={index}
             handleRemove={handleRemove}
         />

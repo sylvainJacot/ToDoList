@@ -4,11 +4,11 @@ import AddItem from "../Components/AddItem";
 import {Route, Switch} from "react-router-dom";
 import {Colors} from  "../Components/Colors";
 import TabStatus from "./TabStatus/TabStatus";
-import ToDoItem from "./ToDoItem";
-import ToDoItemActive from "./ToDoItemActive";
-import ThemeTabs from "./ThemeTabs";
+import ToDoItem from "./ToDoItem/ToDoItem";
+import ToDoItemActive from "./ToDoItem/ToDoItemActive";
+import ThemeTabs from "./Theme/ThemeTabs";
 import ResetBtn from "./ResetButton";
-import ToDoItemCompleted from "./ToDoItemCompleted";
+import ToDoItemCompleted from "./ToDoItem/ToDoItemCompleted";
 
 /* Styling */
 export const Wrapper = styled.div`
@@ -29,6 +29,8 @@ justify-content: center;
 `;
 export const Title = styled.h1`
 color: ${Colors.LightGrey};
+font-weight: 800;
+font-style: italic;
 `;
 
 const ToDoList = () => {
@@ -113,7 +115,7 @@ const ToDoList = () => {
     return(
         <Wrapper>
             <Container>
-                <Title>To do list</Title>
+                <Title>TODOLIST</Title>
                 <AddItem addToDo={addToDo}/>
                 <TabStatus/>
                 <>
@@ -124,13 +126,9 @@ const ToDoList = () => {
                                <ToDoItem
                                    {...props}
                                    todo={item}
-                                   key={`A-${item.id}`}
-                                   message={item.message}
-                                   index={index}
-                                   isCompleted={item.isCompleted}
-                                   creationTime={item.creationTime}
-                                   handleRemove={handleRemove}
                                    handleItemClick={handleItemClick}
+                                   index={index}
+                                   handleRemove={handleRemove}
                                 />
                                )}
                         exact
@@ -141,13 +139,9 @@ const ToDoList = () => {
                                    <ToDoItemActive
                                        {...props}
                                        todo={item}
-                                       key={`B-${item.id}`}
-                                       message={item.message}
-                                       index={index}
-                                       isCompleted={item.isCompleted}
-                                       creationTime={item.creationTime}
-                                       handleRemove={handleRemove}
                                        handleItemClick={handleItemClick}
+                                       index={index}
+                                       handleRemove={handleRemove}
                                    />
                                )}
                         />
@@ -157,13 +151,9 @@ const ToDoList = () => {
                                    <ToDoItemCompleted
                                        {...props}
                                        todo={item}
-                                       key={`C-${item.id}`}
-                                       message={item.message}
-                                       index={index}
-                                       isCompleted={item.isCompleted}
-                                       creationTime={item.creationTime}
-                                       handleRemove={handleRemove}
                                        handleItemClick={handleItemClick}
+                                       index={index}
+                                       handleRemove={handleRemove}
                                    />
                                )}
                         />

@@ -8,7 +8,7 @@ const ToDoItemActive = ({todo, handleItemClick, index, handleRemove}) => {
     return (
         <ToDoItem
             todo={todo}
-            handleItemClic={handleItemClick}
+            handleItemClick={handleItemClick}
             index={index}
             handleRemove={handleRemove}
         />
