@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import {Colors} from "../Colors";
+import {TitleSecondaryColor} from "../Theme/Themes";
 
 export const Wrapper = styled.div`
 position: relative;
@@ -37,13 +38,13 @@ position: relative;
 display: block;
 font-size: 1rem;
 font-weight: 700;
-color: ${props => props.isCompleted? Colors.MediumGrey : Colors.LightGrey};
+color: ${props => props.isCompleted?  Colors.MediumGrey : TitleSecondaryColor};
 transition: .1s;
 &::after {
 display: block;
 position: absolute;
 content: "";
-background-color: ${props => props.isCompleted? Colors.MediumGrey : Colors.LightGrey};
+background-color: ${props => props.isCompleted?  Colors.MediumGrey : TitleSecondaryColor};
 right: ${props => props.isCompleted?"0":"100%"};
 left: 0;
 bottom:50%;

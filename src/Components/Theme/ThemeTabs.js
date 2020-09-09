@@ -1,20 +1,21 @@
-import React from "react";
+import React, {useContext, useState} from "react";
 import styled from "styled-components";
 import {Colors} from "../Colors";
+import {ToDoListContext} from "../AppContext";
 
 export const Wrapper = styled.div`
 display: flex;
 margin-top: 90vh;
 position: absolute;
 `;
-export const Bubble = styled.div`
+export const Bubble = styled.button`
 width: 16px;
 height: 16px;
-background-color: darksalmon;
 margin-left: 16px;
 border-radius: 50%;
 border: 2px solid ${Colors.DarkGrey + "50"};
 transition: .2s;
+cursor: pointer;
 &:first-child {
 margin-left: 0px;
 }
@@ -22,15 +23,23 @@ margin-left: 0px;
 transform: scale(1.1);
 transition: .2s;
 }
+&:focus {
+border-color: azure;
+outline: none;
+}
 `;
 
 const ThemeTabs = () => {
+    const [themeChoice,setThemeChoice] = useContext(ToDoListContext);
+
     return <>
+
         <Wrapper>
-            <Bubble></Bubble>
-            <Bubble></Bubble>
-            <Bubble></Bubble>
+            <Bubble style={{backgroundColor: Colors.DarkGrey}} onClick={() => setThemeChoice("dark")}/>
+            <Bubble style={{backgroundColor: Colors.LightGrey}} onClick={() => setThemeChoice("light")}/>
+            <Bubble style={{backgroundColor: Colors.Yellow}} onClick={() => setThemeChoice("yellow")}/>
         </Wrapper>
+
     </>
 
 };

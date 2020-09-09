@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import styled from "styled-components";
-
+import {BackgroundSecondaryColor} from "../Components/Theme/Themes";
+import {Colors} from "./Colors";
 export const Form = styled.form`
 `;
 
@@ -14,6 +15,10 @@ font-size: 1rem;
 font-weight: 600;
 outline: none;
 box-sizing: border-box;
+background-color: ${BackgroundSecondaryColor};
+& , textarea {
+color: ${Colors.DarkGrey};
+}
 `;
 
 const AddItem = ({addToDo}) => {

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import AddItem from "../Components/AddItem";
 import {Route, Switch} from "react-router-dom";
-import {Colors} from  "../Components/Colors";
+import {TitleColor, BackgroundColor} from "../Components/Theme/Themes";
 import TabStatus from "./TabStatus/TabStatus";
 import ToDoItem from "./ToDoItem/ToDoItem";
 import ToDoItemActive from "./ToDoItem/ToDoItemActive";
@@ -14,7 +14,7 @@ import ToDoItemCompleted from "./ToDoItem/ToDoItemCompleted";
 export const Wrapper = styled.div`
 width: 100%;
 height: 100vh;
-background-color: ${Colors.DarkGrey};
+background-color: ${BackgroundColor};
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -28,7 +28,7 @@ align-items: center;
 justify-content: center;
 `;
 export const Title = styled.h1`
-color: ${Colors.LightGrey};
+color: ${TitleColor};
 font-weight: 800;
 font-style: italic;
 `;
@@ -166,7 +166,8 @@ const ToDoList = () => {
                 <ResetBtn
                     HandleResetBtn={HandleResetBtn}
                 />
-                <ThemeTabs/>
+                    <ThemeTabs/>
+
             </Container>
         </Wrapper>
     )

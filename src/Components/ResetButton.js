@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import {Colors} from "./Colors";
+import {BackgroundColor, BackgroundColorNegative, TitleColor} from "./Theme/Themes"
 
 export const Button = styled.button`
 display: flex;
@@ -8,9 +9,10 @@ align-items: center;
 border-radius: 6px;
 border: none;
 padding: 2px 8px;
-background-color: ${Colors.MediumGrey};
+background-color: ${BackgroundColorNegative};
 font-weight: 700;
-color: ${Colors.White};
+color: ${BackgroundColor};
+cursor: pointer;
 `;
 
 const ResetBtn = (props) => {
