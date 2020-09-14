@@ -11,17 +11,20 @@ import ResetBtn from "./ResetButton";
 import ToDoItemCompleted from "./ToDoItem/ToDoItemCompleted";
 
 /* Styling */
+
+
 export const Wrapper = styled.div`
 width: 100%;
 height: 100vh;
 background-color: ${BackgroundColor};
+position: relative;
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
 `;
 export const Container = styled.div`
-width: 500px;
+width: 600px;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -31,6 +34,10 @@ export const Title = styled.h1`
 color: ${TitleColor};
 font-weight: 800;
 font-style: italic;
+`;
+
+export const TasksContainer = styled.div`
+    width: 100%;
 `;
 
 const ToDoList = () => {
@@ -111,6 +118,10 @@ const ToDoList = () => {
         setToDos([])
     }
 
+    const HandleEditOnClick = () => {
+
+    }
+
 
     return(
         <Wrapper>
@@ -118,7 +129,7 @@ const ToDoList = () => {
                 <Title>TODOLIST</Title>
                 <AddItem addToDo={addToDo}/>
                 <TabStatus/>
-                <>
+                <TasksContainer>
                 {toDos.map((item,index) => (
                     <Switch key={item.id}>
                         <Route path="/"
@@ -129,6 +140,7 @@ const ToDoList = () => {
                                    handleItemClick={handleItemClick}
                                    index={index}
                                    handleRemove={handleRemove}
+                                   HandleEditOnClick={HandleEditOnClick}
                                 />
                                )}
                         exact
@@ -142,6 +154,7 @@ const ToDoList = () => {
                                        handleItemClick={handleItemClick}
                                        index={index}
                                        handleRemove={handleRemove}
+                                       HandleEditOnClick={HandleEditOnClick}
                                    />
                                )}
                         />
@@ -154,6 +167,7 @@ const ToDoList = () => {
                                        handleItemClick={handleItemClick}
                                        index={index}
                                        handleRemove={handleRemove}
+                                       HandleEditOnClick={HandleEditOnClick}
                                    />
                                )}
                         />
@@ -162,7 +176,7 @@ const ToDoList = () => {
 
                     </Switch>
                 ))}
-                </>
+                </TasksContainer>
                 <ResetBtn
                     HandleResetBtn={HandleResetBtn}
                 />

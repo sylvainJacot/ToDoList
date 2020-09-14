@@ -2,6 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import {Colors} from "../Colors";
 import {TitleSecondaryColor} from "../Theme/Themes";
+import EditButton from "./EditButton";
+
+export const Container = styled.div`
+
+`;
 
 export const Wrapper = styled.div`
 position: relative;
@@ -10,7 +15,7 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 transition: .2s;
-padding: 12px 0px;
+padding: 10px 0px 0px 0px;
 &:hover {
 transform: scale(1.01);
 transition: .2s;
@@ -61,17 +66,22 @@ font-weight: 400;
 display: inline-block;
 `;
 
-const ToDoItem = ({todo, handleItemClick, index, handleRemove}) => {
+const ToDoItem = ({todo, handleItemClick, index, handleRemove, HandleEditOnClick}) => {
     return (
-        <Wrapper>
-            <Task
-                isCompleted={todo.isCompleted}
-                onClick={() => handleItemClick(index)}>{todo.message}</Task>
-            <RightSide>
-                <Time>{todo.creationTime}</Time>
-                <span onClick={() => handleRemove(index)}>❌</span>
-            </RightSide>
-        </Wrapper>
+        <>
+            <Container>
+                <Wrapper>
+                    <Task
+                        isCompleted={todo.isCompleted}
+                        onClick={() => handleItemClick(index)}>{todo.message}</Task>
+                    <RightSide>
+                        <Time>{todo.creationTime}</Time>
+                        <span onClick={() => handleRemove(index)}>❌</span>
+                    </RightSide>
+                </Wrapper>
+                <EditButton HandleEditonClick={HandleEditOnClick}/>
+            </Container>
+        </>
             )
 };
 
