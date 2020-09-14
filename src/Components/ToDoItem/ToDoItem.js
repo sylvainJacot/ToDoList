@@ -40,6 +40,7 @@ opacity: 1;
 `;
 
 export const Task = styled.span`
+width: 64%;
 position: relative;
 display: block;
 font-size: 1rem;
@@ -51,8 +52,7 @@ display: block;
 position: absolute;
 content: "";
 background-color: ${props => props.isCompleted?  Colors.MediumGrey : TitleSecondaryColor};
-right: ${props => props.isCompleted?"0":"100%"};
-left: 0;
+width: ${props => props.isCompleted? "100%": "0"};
 bottom:50%;
 height: 2px;
 transform: translate(0,50%);
@@ -80,8 +80,9 @@ const ToDoItem = ({todo, handleItemClick, index, handleRemove, HandleEditOnClick
     return (
         <>
             <Container>
-                <Wrapper onClick={() => handleItemClick(index)}>
+                <Wrapper>
                     <Task
+                        onClick={() => handleItemClick(index)}
                         isCompleted={todo.isCompleted}
                         >{todo.message}</Task>
                     <RightSide>

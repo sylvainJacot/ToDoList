@@ -18,6 +18,7 @@ transition: .2s;
 cursor: pointer;
 &:first-child {
 margin-left: 0px;
+border: 2px solid ${props => props.isOtherTheme === "dark" ? Colors.White + "30" : Colors.DarkGrey + "50"}
 }
 &:hover {
 transform: scale(1.1);
@@ -35,7 +36,7 @@ const ThemeTabs = () => {
     return <>
 
         <Wrapper>
-            <Bubble style={{backgroundColor: Colors.DarkGrey}} onClick={() => setThemeChoice("dark")}/>
+            <Bubble isOtherTheme={themeChoice} style={{backgroundColor: Colors.DarkGrey}} onClick={() => setThemeChoice("dark")}/>
             <Bubble style={{backgroundColor: Colors.LightGrey}} onClick={() => setThemeChoice("light")}/>
             <Bubble style={{backgroundColor: Colors.Yellow}} onClick={() => setThemeChoice("yellow")}/>
         </Wrapper>
