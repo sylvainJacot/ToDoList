@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect,} from "react";
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 import AddItem from "../Components/AddItem";
 import {Route, Switch} from "react-router-dom";
@@ -23,6 +24,16 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 `;
+
+Wrapper.propTypes = {
+    mode: PropTypes.oneOf(["light", "dark", "yellow"])
+};
+
+Wrapper.defaultProps = {
+    mode: "dark",
+};
+
+
 export const Container = styled.div`
 width: 600px;
 display: flex;
@@ -38,6 +49,9 @@ font-style: italic;
 
 export const TasksContainer = styled.div`
     width: 100%;
+    max-height: 400px;
+    height: 400px;
+    overflow: scroll;
 `;
 
 const ToDoList = () => {

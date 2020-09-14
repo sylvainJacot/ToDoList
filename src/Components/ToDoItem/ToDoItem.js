@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {Colors} from "../Colors";
 import {TitleSecondaryColor} from "../Theme/Themes";
 import EditButton from "./EditButton";
+import PropTypes from "prop-types";
 
 export const Container = styled.div`
 
@@ -59,6 +60,15 @@ transition: .1s;
 }
 
 `;
+
+Task.propTypes = {
+    variant: PropTypes.oneOf(['light', 'dark', 'yellow'])
+};
+
+Task.defaultProps = {
+    variant: 'dark',
+};
+
 
 export const Time = styled.div`
 color: ${Colors.MediumGrey};
