@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect,} from "react";
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 import AddItem from "../Components/AddItem";
 import {Route, Switch} from "react-router-dom";
@@ -11,17 +12,30 @@ import ResetBtn from "./ResetButton";
 import ToDoItemCompleted from "./ToDoItem/ToDoItemCompleted";
 
 /* Styling */
+
+
 export const Wrapper = styled.div`
 width: 100%;
 height: 100vh;
 background-color: ${BackgroundColor};
+position: relative;
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
 `;
+
+Wrapper.propTypes = {
+    mode: PropTypes.oneOf(["light", "dark", "yellow"])
+};
+
+Wrapper.defaultProps = {
+    mode: "dark",
+};
+
+
 export const Container = styled.div`
-width: 500px;
+width: 600px;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -31,6 +45,13 @@ export const Title = styled.h1`
 color: ${TitleColor};
 font-weight: 800;
 font-style: italic;
+`;
+
+export const TasksContainer = styled.div`
+    width: 100%;
+    max-height: 400px;
+    height: 400px;
+    overflow: scroll;
 `;
 
 const ToDoList = () => {
@@ -106,9 +127,17 @@ const ToDoList = () => {
 
     /* Add/Update the key and value from the storage */
     const HandleResetBtn = () => {
-        alert("Ca va être tout noir ! 📢")
-        localStorage.setItem("todolist",JSON.stringify([]))
-        setToDos([])
+        const conf = window.confirm("Ca va être tout noir ! 📢")
+        if (conf == true) {
+            localStorage.setItem("todolist",JSON.stringify([]))
+            setToDos([])
+        }
+        return null
+
+    }
+
+    const HandleEditOnClick = () => {
+
     }
 
 
@@ -118,7 +147,7 @@ const ToDoList = () => {
                 <Title>TODOLIST</Title>
                 <AddItem addToDo={addToDo}/>
                 <TabStatus/>
-                <>
+                <TasksContainer>
                 {toDos.map((item,index) => (
                     <Switch key={item.id}>
                         <Route path="/"
@@ -129,6 +158,7 @@ const ToDoList = () => {
                                    handleItemClick={handleItemClick}
                                    index={index}
                                    handleRemove={handleRemove}
+                                   HandleEditOnClick={HandleEditOnClick}
                                 />
                                )}
                         exact
@@ -142,6 +172,7 @@ const ToDoList = () => {
                                        handleItemClick={handleItemClick}
                                        index={index}
                                        handleRemove={handleRemove}
+                                       HandleEditOnClick={HandleEditOnClick}
                                    />
                                )}
                         />
@@ -154,6 +185,7 @@ const ToDoList = () => {
                                        handleItemClick={handleItemClick}
                                        index={index}
                                        handleRemove={handleRemove}
+                                       HandleEditOnClick={HandleEditOnClick}
                                    />
                                )}
                         />
@@ -162,7 +194,7 @@ const ToDoList = () => {
 
                     </Switch>
                 ))}
-                </>
+                </TasksContainer>
                 <ResetBtn
                     HandleResetBtn={HandleResetBtn}
                 />

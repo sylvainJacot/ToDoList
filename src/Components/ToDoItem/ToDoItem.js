@@ -2,6 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import {Colors} from "../Colors";
 import {TitleSecondaryColor} from "../Theme/Themes";
+import EditButton from "./EditButton";
+import PropTypes from "prop-types";
+
+export const Container = styled.div`
+
+`;
 
 export const Wrapper = styled.div`
 position: relative;
@@ -10,7 +16,7 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 transition: .2s;
-padding: 12px 0px;
+padding: 10px 0px 0px 0px;
 &:hover {
 transform: scale(1.01);
 transition: .2s;
@@ -34,6 +40,7 @@ opacity: 1;
 `;
 
 export const Task = styled.span`
+width: 64%;
 position: relative;
 display: block;
 font-size: 1rem;
@@ -45,8 +52,7 @@ display: block;
 position: absolute;
 content: "";
 background-color: ${props => props.isCompleted?  Colors.MediumGrey : TitleSecondaryColor};
-right: ${props => props.isCompleted?"0":"100%"};
-left: 0;
+width: ${props => props.isCompleted? "100%": "0"};
 bottom:50%;
 height: 2px;
 transform: translate(0,50%);
@@ -55,23 +61,38 @@ transition: .1s;
 
 `;
 
+Task.propTypes = {
+    variant: PropTypes.oneOf(['light', 'dark', 'yellow'])
+};
+
+Task.defaultProps = {
+    variant: 'dark',
+};
+
+
 export const Time = styled.div`
 color: ${Colors.MediumGrey};
 font-weight: 400;
 display: inline-block;
 `;
 
-const ToDoItem = ({todo, handleItemClick, index, handleRemove}) => {
+const ToDoItem = ({todo, handleItemClick, index, handleRemove, HandleEditOnClick}) => {
     return (
-        <Wrapper>
-            <Task
-                isCompleted={todo.isCompleted}
-                onClick={() => handleItemClick(index)}>{todo.message}</Task>
-            <RightSide>
-                <Time>{todo.creationTime}</Time>
-                <span onClick={() => handleRemove(index)}>❌</span>
-            </RightSide>
-        </Wrapper>
+        <>
+            <Container>
+                <Wrapper>
+                    <Task
+                        onClick={() => handleItemClick(index)}
+                        isCompleted={todo.isCompleted}
+                        >{todo.message}</Task>
+                    <RightSide>
+                        <Time>{todo.creationTime}</Time>
+                        <span onClick={() => handleRemove(index)}>❌</span>
+                    </RightSide>
+                </Wrapper>
+                <EditButton HandleEditonClick={HandleEditOnClick}/>
+            </Container>
+        </>
             )
 };
 
