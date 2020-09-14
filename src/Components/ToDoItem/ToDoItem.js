@@ -80,10 +80,10 @@ const ToDoItem = ({todo, handleItemClick, index, handleRemove, HandleEditOnClick
     return (
         <>
             <Container>
-                <Wrapper>
+                <Wrapper onClick={() => handleItemClick(index)}>
                     <Task
                         isCompleted={todo.isCompleted}
-                        onClick={() => handleItemClick(index)}>{todo.message}</Task>
+                        >{todo.message}</Task>
                     <RightSide>
                         <Time>{todo.creationTime}</Time>
                         <span onClick={() => handleRemove(index)}>❌</span>

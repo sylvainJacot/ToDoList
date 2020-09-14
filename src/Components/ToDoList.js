@@ -127,9 +127,13 @@ const ToDoList = () => {
 
     /* Add/Update the key and value from the storage */
     const HandleResetBtn = () => {
-        alert("Ca va être tout noir ! 📢")
-        localStorage.setItem("todolist",JSON.stringify([]))
-        setToDos([])
+        const conf = window.confirm("Ca va être tout noir ! 📢")
+        if (conf == true) {
+            localStorage.setItem("todolist",JSON.stringify([]))
+            setToDos([])
+        }
+        return null
+
     }
 
     const HandleEditOnClick = () => {
