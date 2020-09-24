@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState, useRef} from "react";
 import styled from "styled-components";
 import {Colors} from "../Colors";
 import {TitleSecondaryColor} from "../Theme/Themes";
@@ -39,7 +39,7 @@ opacity: 1;
 
 `;
 
-export const Task = styled.span`
+export const TaskNotEditing = styled.span`
 width: 64%;
 position: relative;
 display: block;
@@ -61,13 +61,9 @@ transition: .1s;
 
 `;
 
-Task.propTypes = {
-    variant: PropTypes.oneOf(['light', 'dark', 'yellow'])
-};
+export const TaskEditing = styled.input`
 
-Task.defaultProps = {
-    variant: 'dark',
-};
+`;
 
 
 export const Time = styled.div`
@@ -76,21 +72,50 @@ font-weight: 400;
 display: inline-block;
 `;
 
-const ToDoItem = ({todo, handleItemClick, index, handleRemove, HandleEditOnClick}) => {
+
+const ToDoItem = ({todo, handleItemClick, index, handleRemove}) => {
+
+    const [isEditing,setIsEditing] = useState(false)
+    const isMounted = useRef(true)
+
+    useEffect(() =>{
+        return () => {
+
+        }
+    }, [])
+
+    const handleEditOnCLick = (e) => {
+        e.preventDefault()
+        if(isMounted.current)
+        setIsEditing(!setIsEditing);
+        console.log("clicked")
+        return isEditing
+    }
+
     return (
         <>
             <Container>
                 <Wrapper>
-                    <Task
-                        onClick={() => handleItemClick(index)}
-                        isCompleted={todo.isCompleted}
-                        >{todo.message}</Task>
+                    {
+                    isEditing ?
+                        <TaskEditing
+                            value={todo.message}
+                            onClick={() => handleItemClick(index)}
+                            isCompleted={todo.isCompleted}
+                        />
+                        :
+                        <TaskNotEditing
+                            onClick={() => handleItemClick(index)}
+                            isCompleted={todo.isCompleted}>
+                            {todo.message}
+                        </TaskNotEditing>
+                    }
                     <RightSide>
                         <Time>{todo.creationTime}</Time>
                         <span onClick={() => handleRemove(index)}>❌</span>
                     </RightSide>
                 </Wrapper>
-                <EditButton HandleEditonClick={HandleEditOnClick}/>
+                <EditButton onClick={handleEditOnCLick}/>
             </Container>
         </>
             )

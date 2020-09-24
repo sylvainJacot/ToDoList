@@ -66,6 +66,7 @@ const ToDoList = () => {
     };
 
     const [toDos, setToDos] = useState(initialState());
+    const [isEditing,setIsEditing] = useState(false);
 
     /* toDos is added in the localStorage with the key todolist */
     useEffect(() => {
@@ -136,11 +137,6 @@ const ToDoList = () => {
 
     }
 
-    const HandleEditOnClick = () => {
-
-    }
-
-
     return(
         <Wrapper>
             <Container>
@@ -158,7 +154,6 @@ const ToDoList = () => {
                                    handleItemClick={handleItemClick}
                                    index={index}
                                    handleRemove={handleRemove}
-                                   HandleEditOnClick={HandleEditOnClick}
                                 />
                                )}
                         exact
@@ -172,7 +167,6 @@ const ToDoList = () => {
                                        handleItemClick={handleItemClick}
                                        index={index}
                                        handleRemove={handleRemove}
-                                       HandleEditOnClick={HandleEditOnClick}
                                    />
                                )}
                         />
@@ -185,7 +179,6 @@ const ToDoList = () => {
                                        handleItemClick={handleItemClick}
                                        index={index}
                                        handleRemove={handleRemove}
-                                       HandleEditOnClick={HandleEditOnClick}
                                    />
                                )}
                         />

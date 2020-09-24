@@ -4,7 +4,7 @@ export const ToDoListContext = createContext([{}, () => {}]);
 
 const ToDoListContextProvider = ({children}) => {
 
-    const [themeChoice,setThemeChoice] = useState("dark");
+    const [themeChoice,setThemeChoice] = useState("light");
 
     return <>
     <ToDoListContext.Provider value={[themeChoice,setThemeChoice]}>

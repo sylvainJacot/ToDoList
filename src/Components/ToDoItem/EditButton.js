@@ -29,12 +29,15 @@ transition: .2s;
 
 `;
 
-const EditButton = (props) => {
+const EditButton = ({onClick}) => {
+
     return (
-    <Wrapper onClick={props.HandleEditOnClick}>
+        <>
+    <Wrapper onClick={onClick}>
         <EditIcon/>
         Edit
     </Wrapper>
+            </>
     )
 
 };
